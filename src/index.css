@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .gradient-one {
+    background: linear-gradient(270deg, #c3252c, #f29659, #3a2a1f, #c8120c);
+    background-size: 800% 800%;
+
+    -webkit-animation: grad-one 23s ease infinite;
+    -moz-animation: grad-one 23s ease infinite;
+    animation: grad-one 23s ease infinite;
+  }
+
+  @-webkit-keyframes grad-one {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes grad-one {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes grad-one {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .gradient-two {
+    background: linear-gradient(270deg, #1d0811, #cda4d0, #340965, #454404);
+    background-size: 800% 800%;
+
+    -webkit-animation: grad-two 30s ease infinite;
+    -moz-animation: grad-two 30s ease infinite;
+    animation: grad-two 30s ease infinite;
+  }
+
+  @-webkit-keyframes grad-two {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes grad-two {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes grad-two {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .gradient-three {
+    background: linear-gradient(270deg, #b6a7aa, #706166, #070707, #435859);
+    background-size: 800% 800%;
+
+    -webkit-animation: grad-three 23s ease infinite;
+    -moz-animation: grad-three 23s ease infinite;
+    animation: grad-three 23s ease infinite;
+  }
+
+  @-webkit-keyframes grad-three {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes grad-three {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes grad-three {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .gradient-four {
+    background: linear-gradient(270deg, #a4a3d3, #495579, #d3c5e9, #887bc3);
+    background-size: 800% 800%;
+
+    -webkit-animation: grad-four 30s ease infinite;
+    -moz-animation: grad-four 30s ease infinite;
+    animation: grad-four 30s ease infinite;
+  }
+
+  @-webkit-keyframes grad-four {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes grad-four {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes grad-four {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .grid-custom-col {
+    grid-template-columns: 30px 1fr 50px;
+  }
+
+  /* width */
+  .songs-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  /* Track */
+  .songs-container::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  /* Handle */
+  .songs-container::-webkit-scrollbar-thumb {
+    background: #616161;
+    border-radius: 40px;
+  }
+
+  /* Handle on hover */
+  .songs-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* .progress-bar {
+    animation: progress 10s linear;
+  }
+  @keyframes progress {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  } */
+  .musicGif {
+    width: 3px;
+    height: 15px;
+    border-radius: 4px;
+    display: block;
+    /* margin: 20px auto; */
+    position: relative;
+    background: currentColor;
+    color: #fff;
+    box-sizing: border-box;
+    animation: animloader 0.3s 0.3s linear infinite alternate;
+  }
+
+  .musicGif::after,
+  .musicGif::before {
+    content: '';
+    width: 3px;
+    height: 15px;
+    border-radius: 4px;
+    background: currentColor;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 7px;
+    box-sizing: border-box;
+    animation: animloader 0.3s 0.45s linear infinite alternate;
+  }
+  .musicGif::before {
+    left: -7px;
+    animation-delay: 0s;
+  }
+
+  @keyframes animloader {
+    0% {
+      height: 15px;
+    }
+    100% {
+      height: 4px;
+    }
+  }
+  .glass {
+    background: rgba(0, 0, 0, 0.678);
+    /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
