@@ -58,13 +58,13 @@ export default function App() {
   const [totalTime, setTotalTime] = useState('0:00')
   const [currentTime, setCurrentTime] = useState('0:00')
   const [progress, setProgress] = useState(0)
-  const [volume, setVolume] = useState(5)
+  const [volume, setVolume] = useState(50)
   const [loop, setLoop] = useState(false)
   const [playAfterChange, setPlayAfterChange] = useState(false)
   const [shuffle, setShuffle] = useState(false)
+  const [loading, setIsLoading] = useState(true)
   // const currentSong = songs.find((song) => song.id === currentMusicId)
 
-  // console.log(currentSong)
   const handleChangeSong = (index) => {
     audio.pause()
     setIsPlaying(false)
@@ -75,7 +75,6 @@ export default function App() {
   }
 
   const nextSong = useCallback(() => {
-    console.log('hi')
     if (currentMusicIndex === songs.length - 1) return
 
     audio.pause()
@@ -94,11 +93,16 @@ export default function App() {
 
   useEffect(() => {
     audio.addEventListener('ended', handleAudioEnd)
+    audio.addEventListener('waiting', () => {
+      setIsLoading(true)
+    })
+    audio.addEventListener('canplaythrough', () => {
+      setIsLoading(false)
+    })
     // return audio.removeEventListener('ended', handleAudioEnd)
   }, [audio, handleAudioEnd])
 
   const prevSong = () => {
-    console.log('hi')
     if (currentMusicIndex === 0) return
     audio.pause()
     setIsPlaying(false)
@@ -162,7 +166,6 @@ export default function App() {
     (e) => {
       e.stopPropagation()
 
-      console.log(audio)
       if (!isPlaying) {
         audio.play()
         setIsPlaying(true)
@@ -222,7 +225,6 @@ export default function App() {
     }
 
     setSongs(() => {
-      // console.log(songs)
       if (shuffle) return shuffleArray(allSongs)
       else return allSongs
     })
@@ -230,7 +232,7 @@ export default function App() {
 
   useEffect(() => {
     const index = songs.findIndex((i) => i.id === currentSong.id)
-    console.log(index)
+
     setCurrentMusicIndex(index)
   }, [shuffle, songs, currentSong.id])
 
@@ -260,6 +262,7 @@ export default function App() {
               songs={songs}
               currentSong={currentSong}
               handleChangeSong={handleChangeSong}
+              isPlaying={isPlaying}
             />
           )}
         </AnimatePresence>
@@ -272,6 +275,7 @@ export default function App() {
                 currentTime={currentTime}
                 progress={progress}
                 updateTime={updateTime}
+                loading={loading}
               />
             )}
             <MusicControls

@@ -2,7 +2,12 @@ import { HiOutlineClock } from 'react-icons/hi'
 import Song from './Song'
 import { motion } from 'framer-motion'
 
-export default function AllSongs({ songs, handleChangeSong, currentSong }) {
+export default function AllSongs({
+  songs,
+  handleChangeSong,
+  currentSong,
+  isPlaying,
+}) {
   return (
     <motion.div
       // initial={{ opacity: 0, y: 200 }}
@@ -29,7 +34,7 @@ export default function AllSongs({ songs, handleChangeSong, currentSong }) {
             i={i}
             song={song}
             handleChangeSong={handleChangeSong}
-            playing={currentSong.id === song.id}
+            playing={currentSong.id === song.id && isPlaying}
           />
         ))}
       </div>
