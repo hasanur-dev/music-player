@@ -65,7 +65,6 @@ export default function App() {
   // const currentSong = songs.find((song) => song.id === currentMusicId)
 
   // console.log(currentSong)
-
   const handleChangeSong = (index) => {
     audio.pause()
     setIsPlaying(false)
@@ -75,7 +74,7 @@ export default function App() {
     setPlayAfterChange(true)
   }
 
-  const nextSong = () => {
+  const nextSong = useCallback(() => {
     console.log('hi')
     if (currentMusicIndex === songs.length - 1) return
 
@@ -87,7 +86,17 @@ export default function App() {
     )
     setCurrentSong(songs.filter((song, i) => i === currentMusicIndex + 1)[0])
     setPlayAfterChange(true)
-  }
+  }, [audio, currentMusicIndex, songs])
+
+  const handleAudioEnd = useCallback(() => {
+    nextSong()
+  }, [nextSong])
+
+  useEffect(() => {
+    audio.addEventListener('ended', handleAudioEnd)
+    // return audio.removeEventListener('ended', handleAudioEnd)
+  }, [audio, handleAudioEnd])
+
   const prevSong = () => {
     console.log('hi')
     if (currentMusicIndex === 0) return
